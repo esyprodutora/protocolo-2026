@@ -433,25 +433,51 @@ const App = () => {
         /* Ultimatum Box */
         .ultimatum-box {
           margin-top: 40px; 
-          padding: 20px; 
-          border: 1px solid #333; 
-          background: rgba(0,0,0,0.5);
+          padding: 30px; 
+          border: 1px solid var(--gold-dark); 
+          background: linear-gradient(180deg, rgba(10, 18, 38, 0.9) 0%, rgba(0,0,0,0.95) 100%);
           text-align: center;
+          position: relative;
+        }
+        
+        .ultimatum-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
         }
 
         .ultimatum-title {
-          color: #ccc; 
-          font-size: 0.9rem; 
+          color: var(--gold-primary); 
+          font-size: 1.1rem; 
           text-transform: uppercase; 
-          letter-spacing: 2px;
-          margin-bottom: 10px;
+          letter-spacing: 3px;
+          margin-bottom: 20px;
+          font-weight: 800;
         }
 
         .ultimatum-text {
-          font-family: var(--font-display); 
-          font-size: 1.3rem; 
-          color: #fff;
-          font-style: italic;
+          font-family: var(--font-body); 
+          font-size: 1.1rem; 
+          color: #ddd;
+          line-height: 1.8;
+        }
+
+        .hard-truth {
+           margin: 30px 0;
+           padding: 20px;
+           background: rgba(26, 60, 38, 0.3);
+           border-left: 4px solid var(--gold-primary);
+           text-align: left;
+        }
+        
+        .hard-truth p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .hard-truth strong {
+            color: white;
         }
 
       `}</style>
@@ -486,7 +512,7 @@ const App = () => {
               Eles acham que você é fraco. Eles contam com sua passividade.
             </p>
             <p style={{ marginTop: '20px', fontWeight: 'bold', color: 'white' }}>
-              2026 não é uma eleição. É um ultimato. Ou você se blinda AGORA, ou não sobrará nada para sua família.
+              2026 não é uma eleição. É um ultimato. Ou você blinda sua família e financia a verdade AGORA, ou não sobrará nada.
             </p>
           </div>
           <br/>
@@ -594,7 +620,7 @@ const App = () => {
                  Quanto Vale a <span className="gold-text">Liberdade</span> da Sua Família?
                </h2>
                <p style={{ color: '#888', fontSize: '1rem', marginTop: '15px' }}>
-                 O valor abaixo não é um preço. É uma doação para manter nossa infraestrutura operando nas sombras, longe dos olhos do governo. <br/><strong style={{color: 'white'}}>Você está financiando a Resistência.</strong>
+                 O valor abaixo não é um preço. É o combustível para manter nossa infraestrutura operando nas sombras. <br/><strong style={{color: 'white'}}>Você está financiando a Resistência.</strong>
                </p>
              </div>
 
@@ -623,12 +649,20 @@ const App = () => {
 
             {/* AGGRESSIVE ULTIMATUM SECTION */}
             <div className="ultimatum-box">
-               <div className="ultimatum-title">⚠ Aviso Importante</div>
-               <p className="ultimatum-text">
-                  "Se você sair desta página agora, você está escolhendo entregar o futuro dos seus filhos na mão DELES. Não existe meio termo. Ou você age, ou você obedece."
+               <div className="ultimatum-title">⚠ POR QUE VOCÊ PRECISA AGIR AGORA?</div>
+               
+               <div className="hard-truth">
+                  <p><strong>NÃO CONTE COM OS CAMINHONEIROS:</strong> Eles foram desarticulados e estão sendo vigiados 24h por dia.</p>
+                  <p><strong>NÃO CONTE COM OS QUARTÉIS:</strong> Os generais melancias já bateram continência para o sistema. A força armada que nos restou somos NÓS.</p>
+                  <p><strong>NÃO CONTE COM BRASÍLIA:</strong> O Judiciário já decidiu o vencedor e o Congresso foi comprado.</p>
+               </div>
+
+               <p className="ultimatum-text" style={{ fontStyle: 'italic', color: 'white', fontWeight: 'bold' }}>
+                  "Sua contribuição aqui não é caridade. É munição. É a única forma de manter de pé a infraestrutura que vai virar o jogo antes de 2026. Se a gente cair, sua família cai junto."
                </p>
-               <div style={{ marginTop: '15px', color: '#666', fontSize: '0.8rem' }}>
-                 ↓ CLIQUE EM UM VALOR ACIMA PARA SE PROTEGER ↓
+               
+               <div style={{ marginTop: '20px', color: '#666', fontSize: '0.9rem', borderTop: '1px solid #333', paddingTop: '15px' }}>
+                 ESCOLHA UM VALOR ACIMA. BLINDE-SE. FINANCIE A LIBERDADE.
                </div>
             </div>
 
