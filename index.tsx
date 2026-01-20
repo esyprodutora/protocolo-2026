@@ -235,42 +235,44 @@ const App = () => {
           font-weight: 600;
         }
 
-        /* --- THREAT CARDS --- */
-        .threat-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 40px;
-          margin-top: 60px;
+        /* --- FEATURE CARDS (SOLUTION) --- */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
         }
 
-        .threat-card {
-          background: linear-gradient(160deg, rgba(6, 24, 14, 0.4) 0%, rgba(0,0,0,0.8) 100%);
-          border: 1px solid var(--green-leaf); /* Green Border */
-          padding: 40px;
-          transition: 0.3s;
-          position: relative;
-          overflow: hidden;
+        .feature-card {
+            background: linear-gradient(145deg, #0a1226, #000);
+            border: 1px solid #1f2937;
+            padding: 30px;
+            border-left: 3px solid var(--gold-primary);
+            transition: all 0.3s ease;
         }
         
-        .threat-card::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; width: 100%; height: 3px;
-          background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-          opacity: 0.5;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .threat-card:hover {
-          border-color: var(--gold-primary);
-          transform: translateY(-5px);
-          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .feature-title {
+            color: var(--gold-primary);
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-        .threat-card h3 {
-          font-family: var(--font-display);
-          font-size: 1.5rem;
-          margin-bottom: 15px;
-          color: #fff;
+        
+        .feature-text {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* --- TIMELINE OF COLLAPSE --- */
@@ -463,23 +465,73 @@ const App = () => {
           line-height: 1.8;
         }
 
-        .hard-truth {
-           margin: 30px 0;
-           padding: 20px;
-           background: rgba(26, 60, 38, 0.3);
-           border-left: 4px solid var(--gold-primary);
-           text-align: left;
+        /* New Compact Failure List */
+        .failure-list {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin: 25px 0;
+          text-align: left;
         }
         
-        .hard-truth p {
-            margin-bottom: 15px;
-            color: #ccc;
+        .failure-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 15px;
+          background: rgba(255,255,255,0.02);
+          padding: 15px;
+          border-left: 3px solid var(--tech-red);
+          border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         
-        .hard-truth strong {
-            color: white;
+        .fail-icon {
+           color: var(--tech-red);
+           font-size: 1.2rem;
+           line-height: 1;
+        }
+        
+        .fail-content {
+           font-size: 0.95rem;
+           color: #bbb;
+           line-height: 1.3;
+        }
+        
+        .fail-content strong {
+           display: block;
+           color: #fff;
+           text-transform: uppercase;
+           font-size: 0.8rem;
+           letter-spacing: 1px;
+           margin-bottom: 2px;
         }
 
+        /* Mobile specific overrides */
+        @media (max-width: 768px) {
+           .ultimatum-box {
+               padding: 20px 15px;
+               margin-top: 30px;
+           }
+           
+           .ultimatum-title {
+               font-size: 1rem;
+               margin-bottom: 15px;
+           }
+           
+           .failure-list {
+               gap: 8px;
+               margin: 15px 0;
+           }
+           
+           .failure-item {
+               padding: 10px;
+               gap: 10px;
+           }
+           
+           .ultimatum-text {
+               font-size: 1rem;
+               line-height: 1.5;
+           }
+        }
       `}</style>
 
       {/* ALERT BAR - SCARCITY TRIGGER */}
@@ -568,13 +620,13 @@ const App = () => {
         </div>
       </section>
 
-      {/* THE SOLUTION: THE PROTOCOL */}
+      {/* THE SOLUTION: THE PROTOCOL (REVAMPED) */}
       <section className="section-padding" style={{ background: 'radial-gradient(circle, var(--blue-navy) 0%, #000 100%)' }}>
         <div className="container">
-           <div style={{ textAlign: 'center' }}>
-             <h2 style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)' }}>A Única Forma de <span className="gold-text">Sobreviver</span></h2>
-             <p style={{ color: '#aaa', maxWidth: '600px', margin: '20px auto' }}>
-               O Protocolo 2026 não é um "ebook". É um dossiê de inteligência militar e financeira. É o manual de instruções para você se tornar <strong>ingovernável</strong>.
+           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+             <h2 style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)' }}>Não é apenas um PDF.<br/>É o <span className="gold-text">Arsenal de Guerra</span> do Cidadão Livre.</h2>
+             <p style={{ color: '#aaa', maxWidth: '700px', margin: '20px auto', fontSize: '1.1rem' }}>
+               Eles contam com sua ignorância. O Protocolo 2026 entrega as exatas ferramentas jurídicas, financeiras e digitais que políticos e grandes empresários usam para se proteger enquanto você paga a conta.
              </p>
            </div>
 
@@ -595,14 +647,34 @@ const App = () => {
              </div>
            </div>
 
-           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginTop: '40px' }}>
-             <div style={{ borderLeft: '3px solid var(--gold-primary)', paddingLeft: '15px' }}>
-               <h4 style={{ color: 'var(--gold-primary)' }}>BLINDAGEM FINANCEIRA</h4>
-               <p style={{ fontSize: '0.9rem', color: '#ccc' }}>Como tirar seu dinheiro do raio de alcance do judiciário brasileiro legalmente em 24 horas.</p>
+           {/* NEW FEATURE GRID - AGGRESSIVE & ROBUST */}
+           <div className="feature-grid">
+             <div className="feature-card">
+               <div className="feature-title">🛡️ BLINDAGEM PATRIMONIAL ANTI-DREX</div>
+               <p className="feature-text">
+                 Aprenda o passo a passo para dolarizar parte do seu patrimônio e torná-lo <strong>inalcançável para bloqueios judiciais</strong> (BacenJud/SisbaJud). Eles podem travar o seu banco no Brasil, mas não podem tocar no que você não tem aqui.
+               </p>
              </div>
-             <div style={{ borderLeft: '3px solid var(--gold-primary)', paddingLeft: '15px' }}>
-               <h4 style={{ color: 'var(--gold-primary)' }}>ANONIMATO DIGITAL</h4>
-               <p style={{ fontSize: '0.9rem', color: '#ccc' }}>Técnicas usadas por jornalistas investigativos para se comunicar sem serem rastreados pela "Abin paralela".</p>
+             
+             <div className="feature-card">
+               <div className="feature-title">👻 INVISIBILIDADE DIGITAL MILITAR</div>
+               <p className="feature-text">
+                 Como se comunicar com sua família e organizar movimentos sem usar o WhatsApp (que entrega seus dados) e sem cair na "lista negra". Técnicas usadas por jornalistas investigativos para operar abaixo do radar da inteligência estatal.
+               </p>
+             </div>
+
+             <div className="feature-card">
+               <div className="feature-title">⚖️ CONTRA-MEDIDAS JURÍDICAS</div>
+               <p className="feature-text">
+                 O manual de conduta exato para o momento em que a polícia bater na sua porta às 6 da manhã. O que falar, o que calar e como evitar produzir provas contra si mesmo enquanto a "Justiça" tenta te incriminar.
+               </p>
+             </div>
+
+             <div className="feature-card">
+               <div className="feature-title">🌐 A REDE FANTASMA</div>
+               <p className="feature-text">
+                 Acesso a métodos de organização descentralizada. Como encontrar aliados leais em sua região sem se expor em grupos públicos monitorados. A construção da resistência começa no mundo real, não na internet.
+               </p>
              </div>
            </div>
         </div>
@@ -647,22 +719,42 @@ const App = () => {
               ))}
             </div>
 
-            {/* AGGRESSIVE ULTIMATUM SECTION */}
+            {/* AGGRESSIVE ULTIMATUM SECTION - MOBILE OPTIMIZED */}
             <div className="ultimatum-box">
-               <div className="ultimatum-title">⚠ POR QUE VOCÊ PRECISA AGIR AGORA?</div>
+               <div className="ultimatum-title">⚠ POR QUE AGORA?</div>
                
-               <div className="hard-truth">
-                  <p><strong>NÃO CONTE COM OS CAMINHONEIROS:</strong> Eles foram desarticulados e estão sendo vigiados 24h por dia.</p>
-                  <p><strong>NÃO CONTE COM OS QUARTÉIS:</strong> Os generais melancias já bateram continência para o sistema. A força armada que nos restou somos NÓS.</p>
-                  <p><strong>NÃO CONTE COM BRASÍLIA:</strong> O Judiciário já decidiu o vencedor e o Congresso foi comprado.</p>
+               <div className="failure-list">
+                  <div className="failure-item">
+                    <div className="fail-icon">❌</div>
+                    <div className="fail-content">
+                        <strong>CAMINHONEIROS:</strong>
+                        Monitorados via satélite. Sem liderança ativa.
+                    </div>
+                  </div>
+                  
+                  <div className="failure-item">
+                    <div className="fail-icon">❌</div>
+                    <div className="fail-content">
+                        <strong>FORÇAS ARMADAS:</strong>
+                        O Alto Comando já escolheu o lado deles.
+                    </div>
+                  </div>
+
+                  <div className="failure-item">
+                    <div className="fail-icon">❌</div>
+                    <div className="fail-content">
+                        <strong>BRASÍLIA:</strong>
+                        O "Sistema" já comprou o resultado de 2026.
+                    </div>
+                  </div>
                </div>
 
                <p className="ultimatum-text" style={{ fontStyle: 'italic', color: 'white', fontWeight: 'bold' }}>
-                  "Sua contribuição aqui não é caridade. É munição. É a única forma de manter de pé a infraestrutura que vai virar o jogo antes de 2026. Se a gente cair, sua família cai junto."
+                  "Sua contribuição não é caridade. É munição. Se a nossa infraestrutura cair, sua família cai junto."
                </p>
                
                <div style={{ marginTop: '20px', color: '#666', fontSize: '0.9rem', borderTop: '1px solid #333', paddingTop: '15px' }}>
-                 ESCOLHA UM VALOR ACIMA. BLINDE-SE. FINANCIE A LIBERDADE.
+                 ESCOLHA UM VALOR ACIMA E BLINDE-SE.
                </div>
             </div>
 
